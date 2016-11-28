@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<script type="text/javascript">
+    function signal() {
+        
+        var m = {};
+        var req = $.ajax(
+                {
+                    url: '../home/test',
+                    type: "POST",
+                    dataType: "json",
+                    processData: false,
+                    contentType: "application/json",
+                    data: '',
+                    success: function (r) {
+                        if (r.Success) {
+                            
+                        }
+                        else {
+                            alert('err:' + r);
+                        }
+                    }
+
+                }
+            );
+    }
+</script>
+<p>Use this area to provide additional information.</p>
+<button onclick="signal()">signal</button>
