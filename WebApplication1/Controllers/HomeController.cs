@@ -56,16 +56,16 @@ namespace WebApplication1.Controllers
 
         public class EvPublish
         {
-            public static AutoResetEvent e = new AutoResetEvent(false);
+            public static AutoResetEvent publishEvent = new AutoResetEvent(false);
             
             public static Task<bool> Subscribe(int timeoutMill)
             {                
-                return Task.Run<bool>(() => { return e.WaitOne(timeoutMill);  });               
+                return Task.Run<bool>(() => { return publishEvent.WaitOne(timeoutMill);  });                               
             }
 
             public static void Publish()
             {
-                e.Set();
+                publishEvent.Set();
             }
         }
 
